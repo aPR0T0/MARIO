@@ -30,7 +30,6 @@ jobs:
           required-ros-distributions: ${{ matrix.ros_distribution }}
       - name: Build and Test
         run: |
-            pip uninstall em && pip3 uninstall em
             cd ${{ matrix.test-apps }}
             source /opt/ros/humble/setup.bash
             colcon build
