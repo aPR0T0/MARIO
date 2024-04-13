@@ -29,19 +29,15 @@ jobs:
         with:
           required-ros-distributions: ${{ matrix.ros_distribution }}
       - name: Build and Test
-        uses: ros-tooling/action-ros-ci@0.2.5
-        with:
-          package-name: ${{ matrix.test_apps }}
-          target-ros2-distro: ${{ matrix.ros_distribution }}
-          run: |
-              pip uninstall em && pip3 uninstall em
-              cd ${{ matrix.test-apps }}
-              source /opt/ros/humble/setup.bash
-              colcon build
+        run: |
+            pip uninstall em && pip3 uninstall em
+            cd ${{ matrix.test-apps }}
+            source /opt/ros/humble/setup.bash
+            colcon build
   
   build-test:
     name: Test Build of MARIO
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     container:
       image: espressif/idf:release-v5.1
     strategy:
