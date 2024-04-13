@@ -31,7 +31,6 @@ jobs:
       - name: Build and Test
         run: |
             cd ${{ matrix.test-apps }}
-            source /opt/ros/humble/setup.bash
             colcon build
   
   build-test:
